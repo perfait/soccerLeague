@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LBL</title>
+    <!-- add icon link -->
+    <link rel = "icon" href = "{% static 'images/logo.png' %}" type = "image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;400&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+</head>
+<body>
+
+    {%  include 'league/navbar.html' %}
+
+    {% block content %}
+
+
+
+	{% endblock %}
+
+
+
+<p style="display: block; text-align: center; font-size: 11px;">© 2021 Copyright: Perfait Akaka</p>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
+integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+</script>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const scorerNameInput = document.querySelector("#scorer_name");
+        const autosuggestResults = document.querySelector("#autosuggest-results");
+
+        scorerNameInput.addEventListener("input", function () {
+            const inputText = scorerNameInput.value;
+
+            // Make an AJAX request to fetch player names based on the user's input
+            fetch(`/api/players/?search=${inputText}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    autosuggestResults.innerHTML = "";
+
+                    if (data.length > 0) {
+                        autosuggestResults.style.display = "block"; // Show the results div
+                    } else {
+                        autosuggestResults.style.display = "none"; // Hide the results div if no matches
+                    }
+
+                    data.forEach((player) => {
+                        const resultItem = document.createElement("div");
+                        resultItem.textContent = player.player_name;
+                        resultItem.addEventListener("click", function () {
+                            scorerNameInput.value = player.player_name;
+                            autosuggestResults.style.display = "none"; // Hide the results after selection
+                        });
+                        autosuggestResults.appendChild(resultItem);
+                    });
+                });
+        });
+
+        // Hide the results when clicking outside the input field
+        document.addEventListener("click", function (e) {
+            if (e.target !== scorerNameInput) {
+                autosuggestResults.style.display = "none";
+            }
+        });
+    });
+</script>
+
+
+<script>
+    setTimeout(function() {
+      if ($('#msg').length > 0) {
+        $('#msg').remove();
+      }
+    }, 3000);
+</script>
+
+
+</body>
+
+</html>

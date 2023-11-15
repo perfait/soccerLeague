@@ -1,0 +1,35 @@
+{%  extends 'league/main.html' %}
+
+{% block content %}
+
+<h3 class="top-scorers-header" style="font-family: 'Lexend', sans-serif;">Top Scorers</h3>
+<div class="d-flex top-scorers-div">
+<table class="top-scorers-table table-striped table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Team</th>
+            <th>Goals</th>
+          
+        </tr>
+        </thead>
+
+        <tbody id="tbody">
+            {% for player in top_scorers %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ player.player_name }}</td>
+                    <td>{{ player.team_name.team_name }}</td>
+                    <td>{{ player.goals }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    
+  </table>
+  </div>
+
+        <p style="display: block; text-align: center; font-size: 12px;"><a href="{% url 'leagueStandings' %}">View Standings Table</a></p>
+
+{% endblock %}
+```

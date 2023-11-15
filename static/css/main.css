@@ -1,0 +1,155 @@
+  /* Style for form error messages */
+.errorlist {
+    list-style: none;
+    color: red;
+    margin: 0;
+    padding: 0;
+}
+
+.errorlist li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.navbar{
+    width: 100%;
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+}
+
+.navbar .navbar-nav .nav-item.active a {
+    color: white !important; /* Change to white when active */
+}
+
+.standings-div{
+text-align: center; 
+display: block;
+width: 100%;
+padding-bottom: 20px;
+padding-top: 20px;
+
+
+
+}
+
+.standings-table{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 14px;
+}
+
+.top-scorers-div{
+    text-align: center; 
+    display: block;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    }
+
+.top-scorers-table{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 14px;
+}
+
+
+.top-scorers-header{
+    text-align: center; 
+    padding-top: 50px;
+    font-size: 20px;
+ }
+
+.standings-header{
+    text-align: center; 
+    padding-top: 50px;
+    font-size: 20px;
+}
+
+
+
+.view{
+ color: rgb(0, 0, 0);
+ display: block;
+ text-align: center;
+}
+
+.copyright{
+   position: absolute; 
+   bottom: 5px; 
+   width: 100%;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .navbar{
+        width: 100%;
+    }
+    
+    .standings-div{
+        text-align: center; 
+        display: block;
+        width: 100%;
+        padding-bottom: 20px;
+        padding-top: 10px;
+        }
+    
+    .standings-table{
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        font-size: 9px;
+    }
+        
+        
+    .top-scorers-div{
+        text-align: center; 
+        display: block;
+        width: 100%;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        }
+
+    
+    .top-scorers-table{
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        font-size: 9px;
+    }
+
+    .standings-header{
+        font-size: 15px;
+    }
+    .top-scorers-header{
+    font-size:15px;
+        }
+        
+
+    h3{
+        font-size: 20px;
+        text-align: center; 
+    padding-top: 50px;
+    }
+
+
+    .view{
+        color: rgb(0, 0, 0);
+        display: block;
+        text-align: center;
+        margin-top: 120%;
+        font-size: 12px;
+       }
+
+    p{
+        font-size: 5px;
+    }
+        
+    }
+
+

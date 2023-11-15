@@ -1,0 +1,56 @@
+{%  extends 'league/main.html' %}
+
+{% block content %}
+
+
+<style>
+  .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 85vh;
+  }
+
+  .card {
+      width: 400px; /* Adjust the card width as needed */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-body {
+      padding: 20px;
+  }
+
+  .card-title {
+      font-size: 18px;
+      text-align: center;
+      font-family: 'Lexend', sans-serif;
+  }
+  form{
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+</style>
+
+{%  include 'league/messages.html' %}
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Add Player</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Add Player</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

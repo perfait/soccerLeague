@@ -1,0 +1,91 @@
+{%  extends 'league/main.html' %}
+
+{% block content %}
+<style>
+
+
+#autosuggest-results {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #ccc;
+    max-height: 100px;
+    overflow-y: auto;
+    background: white;
+    display: none;
+    width: 53%; /* Match the width of the input field */
+    margin-left: 98px;
+    font-size: 12px;
+    padding-left: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+#scorer_name:focus + #autosuggest-results {
+    display: block;
+    position: absolute;
+    top: 100%; /* Position below the input field */
+    left: 0;
+    width: 53%; /* Match the width of the input field */
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+
+.card {
+    width: 400px; /* Adjust the width as needed */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .card-body {
+      padding: 20px;
+  }
+
+  .card-title {
+      font-size: 18px;
+      text-align: center;
+      font-family: 'Lexend', sans-serif;
+  }
+
+}
+
+
+
+</style>
+
+{%  include 'league/messages.html' %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add Scorers</h4>
+            <form method="post" id="add-scorer-form" style="font-family: 'Lexend', sans-serif; font-size: 14px;">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="scorer_name">Scorer Name:</label>
+                    <input type="text" name="scorer_name" id="scorer_name" placeholder="Enter scorer name">
+                    <div id="autosuggest-results"></div>
+                </div>
+                <div class="form-group">
+                    <label for="goals_scored">Goals Scored:</label>
+                    {{ add_scorer_form.goals_scored }}
+                </div>
+                <button type="submit" class="btn btn-primary" style="font-size: 12px;">Add Scorer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<p style="display: block; text-align: center; font-size: 12px;"><a href="{% url 'updateScores' %}">Update Scores</a></p>
+
+{% endblock %}
